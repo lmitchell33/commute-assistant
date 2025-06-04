@@ -1,0 +1,525 @@
+{
+    "routes": [
+        {
+            "legs": [
+                {
+                    "steps": [
+                        {
+                            "distanceMeters": 76,
+                            "staticDuration": "23s",
+                            "polyline": {
+                                "encodedPolyline": "_~vuFv`dgNIpD"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.427358399999996,
+                                    "longitude": -79.97980319999999
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.427412,
+                                    "longitude": -79.9806937
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "DEPART",
+                                "instructions": "Head west on Larkins Wy toward S 18th St"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "76 m"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 50,
+                            "staticDuration": "22s",
+                            "polyline": {
+                                "encodedPolyline": "i~vuFhfdgNxAH"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.427412,
+                                    "longitude": -79.9806937
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4269621,
+                                    "longitude": -79.9807368
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left after GetGo Kitchen (on the right)"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "50 m"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 1185,
+                            "staticDuration": "201s",
+                            "polyline": {
+                                "encodedPolyline": "o{vuFrfdgN~A}q@JyDrA{HvByLtAcC"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4269621,
+                                    "longitude": -79.9807368
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4249715,
+                                    "longitude": -79.9672066
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left at the 1st cross street onto Jane St"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "1.2 km"
+                                },
+                                "staticDuration": {
+                                    "text": "3 mins"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 435,
+                            "staticDuration": "117s",
+                            "polyline": {
+                                "encodedPolyline": "aovuF`ragNoQaT"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4249715,
+                                    "longitude": -79.9672066
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.427932,
+                                    "longitude": -79.96384309999999
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left onto S 28th St"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.4 km"
+                                },
+                                "staticDuration": {
+                                    "text": "2 mins"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 140,
+                            "staticDuration": "30s",
+                            "polyline": {
+                                "encodedPolyline": "qawuF~|`gNvAcC`@sAXq@"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.427932,
+                                    "longitude": -79.96384309999999
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4271946,
+                                    "longitude": -79.9625135
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_RIGHT",
+                                "instructions": "Turn right onto S Water St"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.1 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 492,
+                            "staticDuration": "69s",
+                            "polyline": {
+                                "encodedPolyline": "}|vuFtt`gN_DkG{JmS"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4271946,
+                                    "longitude": -79.9625135
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4298929,
+                                    "longitude": -79.9579016
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left onto Hot Metal Bridge"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.5 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 206,
+                            "staticDuration": "42s",
+                            "polyline": {
+                                "encodedPolyline": "ymwuFzw_gNSa@cD~DsAhB"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4298929,
+                                    "longitude": -79.9579016
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.431233899999995,
+                                    "longitude": -79.9592242
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left onto Second Avenue"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.2 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 60,
+                            "staticDuration": "9s",
+                            "polyline": {
+                                "encodedPolyline": "evwuFb``gNsAyA"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.431233899999995,
+                                    "longitude": -79.9592242
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.43165,
+                                    "longitude": -79.958766
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_RIGHT",
+                                "instructions": "Turn right at the 1st cross street onto Bates St"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "60 m"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 18659,
+                            "staticDuration": "736s",
+                            "polyline": {
+                                "encodedPolyline": "yxwuFh}_gNFs@VM|Bi@f@WTQdGoGF[rBoBj@w@r@sAt@eBd@_Bh@gCRmBHcBBiCK_DaJ}k@S_DCaDDiDX_DhBiPFo@DaEAoBmAmRGgDBqDNkDXkC|BoNPqBvEqm@vGcy@JqD@mCoCktASoCa@}C[yAo@yBo@cBmAcC}EsIs@cB{@yCY{AiDsYOuBC{@DuCL}CRwBvAsIPwBFmCCqBMuBYsBg@{Bw@}Bq@uA}A_CwMwQcJiM_C{Dom@meAwByDaA{B_AkCcAuDo@iDa@eDYaE_@mHEkDDmCNmCtA}L|@wFl@uCv@oCr@mBfQoa@L_@h@cCViBHcB@cBGsBYmCsDwQq@mEe@_FWgEuCciABuENgE|Bya@PaH@gMMuw@OuJWyHg@uJi@aHeKujAS{DIeE?mELmEXwEZyCd@qDx@eE~@mDbAcDhAsChBwDvBsD`Tu[Tk@X{ABk@"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.43165,
+                                    "longitude": -79.958766
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4380907,
+                                    "longitude": -79.75654589999999
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "RAMP_RIGHT",
+                                "instructions": "Turn right to merge onto I-376 E toward Monroeville"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "18.7 km"
+                                },
+                                "staticDuration": {
+                                    "text": "12 mins"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 383,
+                            "staticDuration": "20s",
+                            "polyline": {
+                                "encodedPolyline": "aayuFlmxeNAiAOcAgBkHCaA?uICU"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4380907,
+                                    "longitude": -79.75654589999999
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4387445,
+                                    "longitude": -79.7521916
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Keep left to continue on I-376 E/US-22 E, follow signs for Murrysville"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.4 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 2550,
+                            "staticDuration": "142s",
+                            "polyline": {
+                                "encodedPolyline": "ceyuFdrweNB}EP{OBmJB}JLmERqDf@_Gz@cG|@_F~@}DpBoGjB{ElB}DhByCbBiC~AwBhCuCj\\e["
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4387445,
+                                    "longitude": -79.7521916
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.428732499999995,
+                                    "longitude": -79.72734
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "MERGE",
+                                "instructions": "Merge onto US-22 E"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "2.6 km"
+                                },
+                                "staticDuration": {
+                                    "text": "2 mins"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 561,
+                            "staticDuration": "31s",
+                            "polyline": {
+                                "encodedPolyline": "qfwuFzvreNXKdE}Df@u@Vu@Lu@B}@Au@uBiQKm@"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.428732499999995,
+                                    "longitude": -79.72734
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4278591,
+                                    "longitude": -79.72178009999999
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "RAMP_RIGHT",
+                                "instructions": "Take the PA-286 E/Golden Mile Hwy exit"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.6 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 7382,
+                            "staticDuration": "472s",
+                            "polyline": {
+                                "encodedPolyline": "cawuFbtqeNWmAs@yBy@eBgAeBoBqBgBcBeFmFiC_CaHiF}OiL}Ay@kBo@uB_@_BKcB?eVdBsEZeBNQEwTbBIDyBDqACsGo@mASsD_AuCaAm@WI@gCsA_BcAKOqQcNIAaPyLeEeCyCuAsBu@SM_D{@yBa@kDe@yCKoA?GFoDDmCPgDb@o`@pHaCZSCkEHuA?aDQ_Ea@GByBg@uC{@sDaByCgBcDgC{ByBoB_CyU_\\cEcFgDqD"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4278591,
+                                    "longitude": -79.72178009999999
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4873589,
+                                    "longitude": -79.6970019
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "NAME_CHANGE",
+                                "instructions": "Continue onto PA-286 E/Golden Mile Hwy"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "7.4 km"
+                                },
+                                "staticDuration": {
+                                    "text": "8 mins"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 246,
+                            "staticDuration": "20s",
+                            "polyline": {
+                                "encodedPolyline": "_ubvFfyleNzAyC\\c@~@u@f@Up@Mh@Af@F"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4873589,
+                                    "longitude": -79.6970019
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.4855734,
+                                    "longitude": -79.69562599999999
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_RIGHT",
+                                "instructions": "Turn right onto Logan Ferry Rd"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.2 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 98,
+                            "staticDuration": "26s",
+                            "polyline": {
+                                "encodedPolyline": "yibvFtpleN^cF"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.4855734,
+                                    "longitude": -79.69562599999999
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.485411299999996,
+                                    "longitude": -79.6944908
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_LEFT",
+                                "instructions": "Turn left onto Murry Ridge Ln"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.1 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        },
+                        {
+                            "distanceMeters": 171,
+                            "staticDuration": "35s",
+                            "polyline": {
+                                "encodedPolyline": "yhbvFpileN~@PrBeAFKAQc@iB"
+                            },
+                            "startLocation": {
+                                "latLng": {
+                                    "latitude": 40.485411299999996,
+                                    "longitude": -79.6944908
+                                }
+                            },
+                            "endLocation": {
+                                "latLng": {
+                                    "latitude": 40.484657999999996,
+                                    "longitude": -79.6935543
+                                }
+                            },
+                            "navigationInstruction": {
+                                "maneuver": "TURN_RIGHT",
+                                "instructions": "Turn right\nDestination will be on the left"
+                            },
+                            "localizedValues": {
+                                "distance": {
+                                    "text": "0.2 km"
+                                },
+                                "staticDuration": {
+                                    "text": "1 min"
+                                }
+                            },
+                            "travelMode": "DRIVE"
+                        }
+                    ]
+                }
+            ],
+            "duration": "1936s"
+        }
+    ]
+}

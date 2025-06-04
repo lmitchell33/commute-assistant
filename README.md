@@ -1,1 +1,6 @@
 # commute-assistant
+
+This is a simple service using Python, the Google Routes API, and Cron that will basically just just send a text message at 6:30AM every morning. This text message will include the estimated travel time to work along with the estimated fastest route. This is intended to be run on a Unix machine/server (a personal server in my case). Because I want this solution to be completely free, I will be the Google Routes API which gives a free $200 of requests per month (this service should not get anywhere close to that) as well as the google smtp server (through Python's built in smtplib) to send the text messages. SMS brokers and APIs were not used because a majority of them did end up costing money (it only would've been like $2/month but I still did not want to pay that). In order to use the smtp server you need to send the text message from an email address to a phone number at a designated provided. My phone carrier is Verizon, therefore, the recipient email address for my service will be (my phone number)@vtext.com. 
+
+Google Routes API - https://developers.google.com/maps/documentation/routes
+Google Routes API - Compute Route (specific API): https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#Route
