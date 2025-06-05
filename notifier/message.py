@@ -1,4 +1,4 @@
-from config import GMAIL_ADDRESS, GMAIL_PASSWORD, PHONE_NUMBER
+from config import GMAIL_ADDRESS, GMAIL_PASSWORD
 from notifier.logger import logger
 import smtplib
 

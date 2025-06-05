@@ -1,7 +1,7 @@
 from datetime import datetime, timezone, timedelta
 import requests
 
-from config import GOOGLE_API_KEY
+from config import GOOGLE_API_KEY, HOME_ADDRESS, WORK_ADDRESS
 from notifier.logger import logger
 
 GOOGLE_ROUTES_API_URL = "https://routes.googleapis.com/directions/v2:computeRoutes"
@@ -24,23 +24,23 @@ def get_commute_information(start_location, end_location, departure_time=None):
     if not routes:
         logger.error("No routes found in the route data")
         raise Exception("No routes found in the route data")
-    
-    return get_commute_time(routes.get("duration", "0s")), get_general_route_info(routes.get("lets", [{}])[0].get("steps", []))
+
+    return get_commute_time(routes.get("duration", "0s")), get_general_route_info(routes.get("legs", [{}])[0].get("steps", []))
 
 
-def get_commute_time(route):
+def get_commute_time(commute_duration):
     """
     Gets and calculates the commute time from the given route JSON. 
     Assumes the route is a valid response from the Google Routes API.
     
-    :param route: Google Routes API response JSON 
+    :param route: Google Routes API response JSON  from routes/duration
     :return: String representing the commute time 
     """
-    if not route:
+    if not commute_duration:
         logger.error("Error finding commute time while calculating commute time.")
         raise Exception("Error finding commute time while calculating commute time.")
 
-    time_seconds = int(route.rstrip("s"))
+    time_seconds = int(commute_duration.rstrip("s"))
     if time_seconds == 0:
         logger.error("Error finding commute time. The route or duration of the route is empty or not valid")
         raise ValueError("Error finding commute time while calculating commute time.")
@@ -58,13 +58,40 @@ def get_commute_time(route):
         return f"{seconds}s"
 
 
-def get_general_route_info(route):
-    if not route:
-        logger.error("Error finding commute route while calculating general route info.")
-        Exception("Error finding commute route while calculating general route info.")
+def get_general_route_info(directions, min_distance=100):
+    """
+    Gets a list of 'important' directions from the given route JSON. The only directions that are included in the
+    output message are those that are longer than the given minimum distance (meters)
     
-    # TODO: iterate through the steps and get the more detailed information, maybe only take the steps of the
-    # route that are over a certain distance or time threshold?
+    :param directions: Google Routes API response JSON from routes/legs/steps
+    :param min_distance: Minimum distance (meters) for a direction to be included in the output string
+    :return: String '->' separated list of directions with a travel time greater than min_distance
+    """
+    if not directions:
+        logger.error("Error finding commute route while calculating general route info.")
+        raise Exception("Error finding commute route while calculating general route info.")
+    
+    steps_to_keep = [directions[0].get("navigationInstruction", {}).get("instructions", "")]
+
+    for step in directions:
+        # skip the smaller steps that are less than 100 meters because we just want to get the 
+        # general idea behind the route 
+        if int(step.get("distanceMeters")) < min_distance:
+            continue
+
+        instruction = step.get("navigationInstruction", {}).get("instructions", "")
+        if instruction and instruction not in steps_to_keep:
+            steps_to_keep.append(instruction)
+
+    last_step = directions[-1].get("navigationInstruction", {}).get("instructions", "")
+    if last_step not in steps_to_keep:
+        steps_to_keep.append(directions[-1].get("navigationInstruction", {}).get("instructions", ""))
+
+    if not steps_to_keep:
+        logger.error("No steps found in the route directions")
+        raise Exception("No steps found in the route directions")
+    
+    return " -> ".join(steps_to_keep)
 
 
 def get_commute_route(start_location, end_location, departure_time=None):
@@ -153,3 +180,9 @@ def get_rfc3339_time(time="07:30"):
     # timezones are created in EST to ensure consistency with local time, but api requires UTC
     utc_time = est_time.astimezone(timezone.utc)
     return utc_time.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+
+if __name__ == "__main__":
+    commute_time, directions = get_commute_information(HOME_ADDRESS, WORK_ADDRESS, "23:30")
+    print(f"Commute time: {commute_time}")
+    print(f"Directions: \n {directions}")
