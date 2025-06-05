@@ -8,7 +8,7 @@ import os
 load_dotenv()
 
 GMAIL_ADDRESS=os.environ.get("GMAIL_ADDRESS", "")
-GMAIL_PASSWORD=os.environ.get("GMAIL_PASSWORD", "")
+GOOGLE_APP_PASSWORD=os.environ.get("GOOGLE_APP_PASSWORD", "")
 PHONE_NUMBER=os.environ.get("PHONE_NUMBER", "")
 GOOGLE_API_KEY=os.environ.get("GOOGLE_API_KEY", "")
 HOME_ADDRESS=os.environ.get("HOME_ADDRESS", "")

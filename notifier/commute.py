@@ -90,8 +90,10 @@ def get_general_route_info(directions, min_distance=100):
     if not steps_to_keep:
         logger.error("No steps found in the route directions")
         raise Exception("No steps found in the route directions")
-    
-    return " -> ".join(steps_to_keep)
+
+    numbered_directions = [f"{i+1}. {direction}" for i, direction in enumerate(steps_to_keep)]
+
+    return "\n".join(numbered_directions)
 
 
 def get_commute_route(start_location, end_location, departure_time=None):
