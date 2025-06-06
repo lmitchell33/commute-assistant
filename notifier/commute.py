@@ -25,7 +25,7 @@ def get_commute_information(start_location, end_location, departure_time=None):
         logger.error("No routes found in the route data")
         raise Exception("No routes found in the route data")
 
-    return get_commute_time(routes.get("duration", "0s")), get_general_route_info(routes.get("legs", [{}])[0].get("steps", []))
+    return get_commute_time(routes.get("duration", "0s")), get_directions(routes.get("legs", [{}])[0].get("steps", []))
 
 
 def get_commute_time(commute_duration):
@@ -58,7 +58,7 @@ def get_commute_time(commute_duration):
         return f"{seconds}s"
 
 
-def get_general_route_info(directions, min_distance=100):
+def get_directions(directions, min_distance=100):
     """
     Gets a list of 'important' directions from the given route JSON. The only directions that are included in the
     output message are those that are longer than the given minimum distance (meters)

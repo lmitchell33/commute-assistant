@@ -1,3 +1,7 @@
+"""
+I probably should have used something like Twilio to send the messages, but I did not 
+want to pay for it (even if its only like less than $5 a year). 
+"""
 from config import GMAIL_ADDRESS, GOOGLE_APP_PASSWORD, PHONE_NUMBER
 from notifier.logger import logger
 import smtplib
@@ -5,9 +9,10 @@ from email.message import EmailMessage
 
 def send_message(msg, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
     """
-    Sends a text message/email to a given receipient. To send text messages you must end the phone number with an "@carrier.com"
+    Sends a text message/email to a given recipient. To send text messages you must end the phone number with an "@carrier.com"
 
-    :param msg: The message to send
+    :param msg: The plaintext EmailMessage obj message to send
+    :param sender: The sender of the message
     :param recipient: The recipient of the message
     """
     if not msg:
@@ -23,16 +28,24 @@ def send_message(msg, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
         to_addrs=recipient
     )
     server.quit()
+    logger.info(f"Successfully sent message to {recipient}")
 
 
 def send_sms_message(message, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
+    """
+    Creates an SMS message and sends it
+
+    :param msg: The string message to send
+    :param sender: The sender of the message
+    :param recipient: The recipient of the message
+    """
     if not message:
         logger.error("No message while trying to send the text")
         raise ValueError("No message while trying to send the text")
     
     msg = EmailMessage()
-    msg.set_content(message)
-    msg["Subject"] = "" # the SMS doesnt like it when I include this
+    msg.set_content(message, subtype="plain", cte="7bit")
+    msg["Subject"] = "" # the SMS doesnt like it when I dont include this
     msg["From"] = sender
     msg["To"] = recipient
 

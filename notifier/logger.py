@@ -1,3 +1,8 @@
+"""
+This logger could have been implemented as simple print statements with the output of the python file
+being piped into a log file (python3 main.py >> logs.log) but this was honestly easier
+"""
+
 import logging
 from pathlib import Path
 

@@ -7,11 +7,14 @@ import os
 
 load_dotenv()
 
-GMAIL_ADDRESS=os.environ.get("GMAIL_ADDRESS", "")
-GOOGLE_APP_PASSWORD=os.environ.get("GOOGLE_APP_PASSWORD", "")
-PHONE_NUMBER=os.environ.get("PHONE_NUMBER", "")
-GOOGLE_API_KEY=os.environ.get("GOOGLE_API_KEY", "")
-HOME_ADDRESS=os.environ.get("HOME_ADDRESS", "")
-WORK_ADDRESS=os.environ.get("WORK_ADDRESS", "")
-
-# TODO: Functionality for checking to ensure the variables are set/loaded properly
+# attempt to hard index the variables so that if one is not found it will throw an error
+try:
+    GMAIL_ADDRESS = os.environ["GMAIL_ADDRESS"]
+    GOOGLE_APP_PASSWORD = os.environ["GOOGLE_APP_PASSWORD"]
+    PHONE_NUMBER = os.environ["PHONE_NUMBER"]
+    GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
+    HOME_ADDRESS = os.environ["HOME_ADDRESS"]
+    WORK_ADDRESS = os.environ["WORK_ADDRESS"]
+except KeyError:
+    print("Failed to load one or more environment variables. Check to make sure you have a .env file with all necessary variables")
+    raise
