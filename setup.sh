@@ -13,8 +13,8 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # echo "${SCRIPT_DIR}"
 
-# 6:00 AM Monday-Friday
-CRON_JOB="00 6 * * 1-5 python3 ${SCRIPT_DIR}/main.py"
+# 5:00 AM Monday-Friday
+CRON_JOB="00 5 * * 1-5 python3 ${SCRIPT_DIR}/main.py"
 
 # Don't allow repeat cron jobs to be added
 if crontab -l | grep -Fq "python3 ${SCRIPT_DIR}/main.py"; then

@@ -33,12 +33,13 @@ def parse_args():
     """
     Creates and parses CLI arguments
     """
+    # only make the argument required if the environment variable is not set
     parser = ArgumentParser(description="Send commute information via SMS")
-    parser.add_argument("--start", default=HOME_ADDRESS, help="Starting address")
-    parser.add_argument("--end", default=WORK_ADDRESS, help="Destination address")
-    parser.add_argument("--time", default="06:00", help="Normal departure time")
-    parser.add_argument("--phone", default=PHONE_NUMBER, help="Phone number to send the message to")
-    parser.add_argument("--sender", default=GMAIL_ADDRESS, help="Gmail address to send the message from")
+    parser.add_argument("--start", default=HOME_ADDRESS, required=HOME_ADDRESS is None, help="Starting address")
+    parser.add_argument("--end", default=WORK_ADDRESS, required=WORK_ADDRESS is None, help="Destination address")
+    parser.add_argument("--sender", default=GMAIL_ADDRESS, required=GMAIL_ADDRESS is None, help="Gmail address to send the message from")
+    parser.add_argument("--phone", default=PHONE_NUMBER, required=PHONE_NUMBER is None, help="Phone number to send the message to")
+    parser.add_argument("--time", default="07:30", help="Normal departure time")
     return parser.parse_args()
 
 
