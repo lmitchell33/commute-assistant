@@ -2,7 +2,6 @@
 
 # NOTE: you may have to run this script as a superuser (sudo ./setup.sh)
 
-# if cron is not installed, install it
 if ! sudo apt list --installed 2>/dev/null | grep -Fq "cron"; then
   echo "Installing cron..."
   sudo apt update && sudo apt install -y cron
