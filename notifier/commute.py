@@ -122,7 +122,7 @@ def get_commute_route(start_location, end_location, departure_time=None):
 
     departure_time = get_rfc3339_time(departure_time)
 
-    # if you want you can also add "computeAlternativeRoutes" : True, to get more routes
+    # could add the "computeAlternativeRoutes" : True, to get more routes but I would rather keep only the best one
     request_body = {
         "origin" : {
             "address": start_location
@@ -173,13 +173,13 @@ def get_rfc3339_time(time="07:30"):
         est_time = datetime(today.year, today.month, today.day, hour, minute, 0, 000000, tzinfo=est_timezone)
 
     elif isinstance(time, datetime):
-        # need to ensure the timezone is set to EST (my time sorry other people)
+        # need to ensure the timezone is set to EST (sorry other people)
         if time.tzinfo is None:
             est_time = time.replace(tzinfo=est_timezone)
         else:
             est_time = time.astimezone(est_timezone)
 
-    # timezones are created in EST to ensure consistency with local time, but api requires UTC
+    # api requires UTC
     utc_time = est_time.astimezone(timezone.utc)
     return utc_time.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
