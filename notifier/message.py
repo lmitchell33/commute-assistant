@@ -7,7 +7,7 @@ from notifier.logger import logger
 import smtplib
 from email.message import EmailMessage
 
-def send_message(msg, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
+def send_message(msg: EmailMessage, sender: str = GMAIL_ADDRESS, recipient: str = PHONE_NUMBER):
     """
     Sends a text message/email to a given recipient. To send text messages you must end the phone number with an "@carrier.com"
 
@@ -19,19 +19,22 @@ def send_message(msg, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
         logger.error("No message while trying to send the text")
         raise ValueError("No message while trying to send the text")
     
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(GMAIL_ADDRESS, GOOGLE_APP_PASSWORD)
-    server.send_message(
-        msg=msg, 
-        from_addr=sender, 
-        to_addrs=recipient
-    )
-    server.quit()
-    logger.info(f"Successfully sent message to {recipient}")
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(GMAIL_ADDRESS, GOOGLE_APP_PASSWORD)
+        server.send_message(
+            msg=msg, 
+            from_addr=sender, 
+            to_addrs=recipient
+        )
+        server.quit()
+        logger.info(f"Successfully sent message to {recipient}")
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error("Failed to sign into SMTP server. Check the gmail address and google app password")
+        raise
 
-
-def send_sms_message(message, sender=GMAIL_ADDRESS, recipient=PHONE_NUMBER):
+def send_sms_message(message:str , sender: str = GMAIL_ADDRESS, recipient: str = PHONE_NUMBER):
     """
     Creates an SMS message and sends it
 

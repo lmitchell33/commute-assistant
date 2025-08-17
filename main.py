@@ -7,18 +7,19 @@ from argparse import ArgumentParser
 from notifier.commute import get_commute_information
 from notifier.message import send_sms_message
 from notifier.logger import logger
-from config import HOME_ADDRESS, WORK_ADDRESS, PHONE_NUMBER, GMAIL_ADDRESS, TRAVEL_METHOD
+from config import PHONE_NUMBER, GMAIL_ADDRESS
 
-def construct_commute_message(start_addr, end_addr, departure_time):
+def construct_commute_message(start_addr: str, end_addr: str, departure_time: str, travel_method: str):
     """
     Construct the SMS message to send to the user
 
     :param start_addr: The starting address for the commute
     :param end_addr: The ending address for the commute
-    :param departure_time: Optional departure time, defaults to 7:30 AM today. Inputs can be:
+    :param departure_time: Optional departure time, defaults to 7:30 AM today.
+    :param travel_method: Optional departure time, defaults to 7:30 AM today.
     :return: The final SMS message
     """
-    travel_time , directions = get_commute_information(start_addr, end_addr, departure_time)
+    travel_time , directions = get_commute_information(start_addr, end_addr, travel_method, departure_time, )
     
     # the verizon SMS gateway kept truncating the message because it was too long, so
     # shorter the address to use less characters 
@@ -35,11 +36,9 @@ def parse_args():
     """
     # only make the argument required if the environment variable is not set
     parser = ArgumentParser(description="Send commute information via SMS")
-    parser.add_argument("--start", default=HOME_ADDRESS, required=HOME_ADDRESS is None, help="Starting address")
-    parser.add_argument("--end", default=WORK_ADDRESS, required=WORK_ADDRESS is None, help="Destination address")
-    parser.add_argument("--sender", default=GMAIL_ADDRESS, required=GMAIL_ADDRESS is None, help="Gmail address to send the message from")
-    parser.add_argument("--phone", default=PHONE_NUMBER, required=PHONE_NUMBER is None, help="Phone number to send the message to")
-    parser.add_argument("--method", default=TRAVEL_METHOD, help="Method of travel")
+    parser.add_argument("--start", required=True, help="Starting address, must be in the form of '1234 Example Street, City, State Zip Code'")
+    parser.add_argument("--end", required=True, help="Destination address, must be in the form of '1234 Example Street, City, State Zip Code'")
+    parser.add_argument("--method", default="DRIVE", help="Method of travel")
     parser.add_argument("--time", default="07:30", help="Normal departure time")
     return parser.parse_args()
 
@@ -49,8 +48,8 @@ def main():
         args = parse_args()
         logger.info("Starting the commute notification script")
 
-        msg = construct_commute_message(args.start, args.end, args.time)
-        send_sms_message(msg, args.sender, args.phone)
+        msg = construct_commute_message(args.start, args.end, args.time, args.method)
+        send_sms_message(msg, GMAIL_ADDRESS, PHONE_NUMBER)
 
     except Exception as e:
         logger.error("Failed to send message")
