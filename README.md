@@ -37,10 +37,13 @@ $ pip install -r requirements.txt
 
 3. **Create a .env file**
 
-Create a `.env` in the `/commute-assistant` directory with the following contents:
+Create a `.env` in the `/commute-assistant` directory with the following **required** contents:
 
 - `GMAIL_ADDRESS=`
 - `GOOGLE_APP_PASSWORD=`
+
+Thsee are optional values you may also include in the .env file:
+
 - `PHONE_NUMBER=`
 - `GOOGLE_API_KEY=`
 - `HOME_ADDRESS=`
@@ -59,7 +62,7 @@ $ ./setup.sh
 
 ## Side Notes
 
-- Although this was created and intended to be used without a Unix/Linux based machine running cron (a person server perhaps?) you can still use it on Windows using the task scheduler application. 
+- Although this was created and intended to be used without a Unix/Linux based machine running cron (a personal server perhaps?) you can still use it on Windows using the task scheduler application. 
 
 - The Google Routes API has a usage cap on how many calls it can make **per month** my personal use case for this (once a day) will not even come close to touching this 
 
