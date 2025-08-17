@@ -42,14 +42,20 @@ Create a `.env` in the `/commute-assistant` directory with the following **requi
 - `GMAIL_ADDRESS=`
 - `GOOGLE_APP_PASSWORD=`
 
-Thsee are optional values you may also include in the .env file:
+These are optional values you may also include in the .env file:
 
 - `PHONE_NUMBER=`
 - `GOOGLE_API_KEY=`
 - `HOME_ADDRESS=`
 - `WORK_ADDRESS=`
+- `TRAVEL_METHOD=`
 
-Note that the only two variables that are required are `GOOGLE_API_KEY` and `GOOGLE_APP_PASSWORD`. All other variables can be passed in as command line arguments and are completely optional. Another work around to this is to simply manually set the value of `GOOGLE_API_KEY` and `GOOGLE_APP_PASSWORD` in `config.py`
+Note that the only two variables that are required are `GOOGLE_API_KEY` and `GOOGLE_APP_PASSWORD`. All other variables can be passed in as command line arguments and are completely optional. Also note if the `TRAVEL_METHOD` env variable is not set, it will default to `DRIVE`. Other options for the travel method include: 
+
+- `BICYCLE`
+- `WALK` 
+- `TRANSIT`
+- `TWO-WHEELED-VEHICLE`.
 
 4. **Setup the cronjob**
 

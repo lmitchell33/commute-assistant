@@ -7,14 +7,10 @@ import os
 
 load_dotenv()
 
-# Not-required environment variables
-GMAIL_ADDRESS = os.environ.get("GMAIL_ADDRESS")
-PHONE_NUMBER = os.environ.get("PHONE_NUMBER") 
-HOME_ADDRESS = os.environ.get("HOME_ADDRESS")
-WORK_ADDRESS = os.environ.get("WORK_ADDRESS")
-
 # attempt to hard index the variables so that if one is not found it will throw an error
 try:
+    GMAIL_ADDRESS = os.environ.get("GMAIL_ADDRESS")
+    PHONE_NUMBER = os.environ.get("PHONE_NUMBER") 
     GOOGLE_APP_PASSWORD = os.environ["GOOGLE_APP_PASSWORD"]
     GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
 except KeyError:

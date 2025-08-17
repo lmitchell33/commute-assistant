@@ -1,21 +1,23 @@
 from datetime import datetime, timezone, timedelta
 import requests
+from typing import Optional
 
-from config import GOOGLE_API_KEY, HOME_ADDRESS, WORK_ADDRESS
+from config import GOOGLE_API_KEY
 from notifier.logger import logger
 
 GOOGLE_ROUTES_API_URL = "https://routes.googleapis.com/directions/v2:computeRoutes"
 
-def get_commute_information(start_location, end_location, departure_time=None):
+def get_commute_information(start_location: str, end_location: str, travel_method: str, departure_time: Optional[str | None] = None):
     """
     Gets commute time and some general/basic route information/directions from the Google Routes API.
 
     :param start_location: The starting address for the commute
     :param end_location: The ending address for the commute
-    :param departure_time: Optional departure time, defaults to 7:30 AM today. Inputs can be:
+    :param travel_method: Method of transportation to consider, see readme for possible values.
+    :param departure_time: Optional departure time, defaults to 7:30 AM today.
     :return: A tuple containing the commute time (str), general route information/directions (str)
     """
-    route_data = get_commute_route(start_location, end_location, departure_time)
+    route_data = get_commute_route(start_location, end_location, travel_method, departure_time)
     if not route_data:
         logger.error("No route data received")
         raise Exception("No route data received")
@@ -28,7 +30,7 @@ def get_commute_information(start_location, end_location, departure_time=None):
     return get_commute_time(routes.get("duration", "0s")), get_directions(routes.get("legs", [{}])[0].get("steps", []))
 
 
-def get_commute_time(commute_duration):
+def get_commute_time(commute_duration: str):
     """
     Gets and calculates the commute time from the given route JSON. 
     Assumes the route is a valid response from the Google Routes API.
@@ -58,14 +60,14 @@ def get_commute_time(commute_duration):
         return f"{seconds}s"
 
 
-def get_directions(directions, min_distance=100):
+def get_directions(directions: list[dict], min_distance: int = 100):
     """
     Gets a list of 'important' directions from the given route JSON. The only directions that are included in the
     output message are those that are longer than the given minimum distance (meters)
     
     :param directions: Google Routes API response JSON from routes/legs/steps
     :param min_distance: Minimum distance (meters) for a direction to be included in the output string
-    :return: String '->' separated list of directions with a travel time greater than min_distance
+    :return: String newline separated list of directions with a travel time greater than min_distance
     """
     if not directions:
         logger.error("Error finding commute route while calculating general route info.")
@@ -96,7 +98,7 @@ def get_directions(directions, min_distance=100):
     return "\n".join(numbered_directions)
 
 
-def get_commute_route(start_location, end_location, departure_time=None):
+def get_commute_route(start_location: str, end_location: str, travel_method: str, departure_time: Optional[str | None] = None):
     """
     Gets possible routes to take from the given starting location (address) 
     to the given ending location (address) using the Google Routes API
@@ -109,6 +111,7 @@ def get_commute_route(start_location, end_location, departure_time=None):
 
     :param start_location:  The starting address for the commute
     :param end_location: The ending address for the commute
+    :param travel_method: Method of transportation to consider, see readme for possible values.
     :param departure_time: Optional departure time, defaults to 7:30 AM today. Inputs can be:
     :type departure_time: datetime, str (HH:MM), or None (default)
     :return: A JSON response containing the routes and their details
@@ -130,12 +133,12 @@ def get_commute_route(start_location, end_location, departure_time=None):
         "destination" : {
             "address": end_location
         },
-        "travelMode" : "DRIVE",
+        "travelMode" : travel_method,
         "routingPreference" : "TRAFFIC_AWARE_OPTIMAL",
         "departureTime" : departure_time,
         "languageCode": "en-US",
         "units": "METRIC",
-        "trafficModel" : "BESt_GUESS",
+        "trafficModel" : "BEST_GUESS",
     }
 
     response = requests.post(
@@ -151,7 +154,7 @@ def get_commute_route(start_location, end_location, departure_time=None):
     return response.json()
 
 
-def get_rfc3339_time(time="07:30"):
+def get_rfc3339_time(time: Optional[str | datetime] = "07:30"):
     """
     Converts a given time to RFC3339 format in UTC.
 
@@ -182,9 +185,3 @@ def get_rfc3339_time(time="07:30"):
     # api requires UTC
     utc_time = est_time.astimezone(timezone.utc)
     return utc_time.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
-
-
-if __name__ == "__main__":
-    commute_time, directions = get_commute_information(HOME_ADDRESS, WORK_ADDRESS, "23:30")
-    print(f"Commute time: {commute_time}")
-    print(f"Directions: \n {directions}")
