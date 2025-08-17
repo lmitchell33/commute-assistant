@@ -12,6 +12,7 @@ GMAIL_ADDRESS = os.environ.get("GMAIL_ADDRESS")
 PHONE_NUMBER = os.environ.get("PHONE_NUMBER") 
 HOME_ADDRESS = os.environ.get("HOME_ADDRESS")
 WORK_ADDRESS = os.environ.get("WORK_ADDRESS")
+TRAVEL_METHOD = os.environ.get("TRAVEL_METHOD", "DRIVE") 
 
 # attempt to hard index the variables so that if one is not found it will throw an error
 try:

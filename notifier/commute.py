@@ -1,7 +1,7 @@
 from datetime import datetime, timezone, timedelta
 import requests
 
-from config import GOOGLE_API_KEY, HOME_ADDRESS, WORK_ADDRESS
+from config import GOOGLE_API_KEY, HOME_ADDRESS, WORK_ADDRESS, TRAVEL_METHOD
 from notifier.logger import logger
 
 GOOGLE_ROUTES_API_URL = "https://routes.googleapis.com/directions/v2:computeRoutes"
@@ -130,7 +130,7 @@ def get_commute_route(start_location, end_location, departure_time=None):
         "destination" : {
             "address": end_location
         },
-        "travelMode" : "DRIVE",
+        "travelMode" : TRAVEL_METHOD,
         "routingPreference" : "TRAFFIC_AWARE_OPTIMAL",
         "departureTime" : departure_time,
         "languageCode": "en-US",

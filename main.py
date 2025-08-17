@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 from notifier.commute import get_commute_information
 from notifier.message import send_sms_message
 from notifier.logger import logger
-from config import HOME_ADDRESS, WORK_ADDRESS, PHONE_NUMBER, GMAIL_ADDRESS
+from config import HOME_ADDRESS, WORK_ADDRESS, PHONE_NUMBER, GMAIL_ADDRESS, TRAVEL_METHOD
 
 def construct_commute_message(start_addr, end_addr, departure_time):
     """
@@ -39,6 +39,7 @@ def parse_args():
     parser.add_argument("--end", default=WORK_ADDRESS, required=WORK_ADDRESS is None, help="Destination address")
     parser.add_argument("--sender", default=GMAIL_ADDRESS, required=GMAIL_ADDRESS is None, help="Gmail address to send the message from")
     parser.add_argument("--phone", default=PHONE_NUMBER, required=PHONE_NUMBER is None, help="Phone number to send the message to")
+    parser.add_argument("--method", default=TRAVEL_METHOD, help="Method of travel")
     parser.add_argument("--time", default="07:30", help="Normal departure time")
     return parser.parse_args()
 
